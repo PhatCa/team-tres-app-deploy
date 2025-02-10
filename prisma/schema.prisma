@@ -39,14 +39,14 @@ enum Condition {
     poor
 }
 
-model Stuff {
-    id        Int       @id @default(autoincrement())
-    name      String
-    quantity  Int
-    condition Condition
-    income    Float
-    owner     String
-}
+// model Stuff {
+//     id        Int       @id @default(autoincrement())
+//     name      String
+//     quantity  Int
+//     condition Condition
+//     income    Float
+//     owner     String
+// }
 
 model IncomeStatement {
     id                          Int   @id @default(autoincrement())
