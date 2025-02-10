@@ -32,12 +32,12 @@ model User {
     role     Role   @default(CLIENT)
 }
 
-enum Condition {
-    excellent
-    good
-    fair
-    poor
-}
+// enum Condition {
+//     excellent
+//     good
+//     fair
+//     poor
+// }
 
 // model Stuff {
 //     id        Int       @id @default(autoincrement())
