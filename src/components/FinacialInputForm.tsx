@@ -3,20 +3,20 @@
 import { useSession } from 'next-auth/react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import swal from 'sweetalert';
+// import { yupResolver } from '@hookform/resolvers/yup';
+// import swal from 'sweetalert';
 import { redirect } from 'next/navigation';
-import { addStuff } from '@/lib/dbActions';
+// import { addStuff } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
-import { AddStuffSchema } from '@/lib/validationSchemas';
+// import { AddStuffSchema } from '@/lib/validationSchemas';
 
-const onSubmit = async (data: { name: string; quantity: number; owner: string; condition: string }) => {
-  // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
-  await addStuff(data);
-  swal('Success', 'Your item has been added', 'success', {
-    timer: 2000,
-  });
-};
+// const onSubmit = async (data: { name: string; quantity: number; owner: string; condition: string }) => {
+//   // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
+//   await addStuff(data);
+//   swal('Success', 'Your item has been added', 'success', {
+//     timer: 2000,
+//   });
+// };
 
 const FinancialInputForm: React.FC = () => {
   const { data: session, status } = useSession();
@@ -24,11 +24,11 @@ const FinancialInputForm: React.FC = () => {
   const currentUser = session?.user?.email || '';
   const {
     register,
-    handleSubmit,
+    // handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(AddStuffSchema),
+    // resolver: yupResolver(AddStuffSchema),
   });
   if (status === 'loading') {
     return <LoadingSpinner />;
@@ -46,7 +46,8 @@ const FinancialInputForm: React.FC = () => {
           </Col>
           <Card>
             <Card.Body>
-              <Form onSubmit={handleSubmit(onSubmit)}>
+              {/* <Form onSubmit={handleSubmit(onSubmit)}> */}
+              <Form>
                 <Form.Group>
                   <Form.Label>Company Name</Form.Label>
                   <input
@@ -54,7 +55,7 @@ const FinancialInputForm: React.FC = () => {
                     {...register('name')}
                     className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.name?.message}</div>
+                  <div className="invalid-feedback">errors.name?.message</div>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Revenue</Form.Label>
@@ -63,7 +64,7 @@ const FinancialInputForm: React.FC = () => {
                     {...register('quantity')}
                     className={`form-control ${errors.quantity ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.quantity?.message}</div>
+                  <div className="invalid-feedback">errors.quantity?.message</div>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Net Income</Form.Label>
@@ -72,7 +73,7 @@ const FinancialInputForm: React.FC = () => {
                     {...register('income')}
                     className={`form-control ${errors.income ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.income?.message}</div>
+                  <div className="invalid-feedback">errors.income?.message</div>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Operating Expenses</Form.Label>
@@ -81,7 +82,7 @@ const FinancialInputForm: React.FC = () => {
                     {...register('expenses')}
                     className={`form-control ${errors.expenses ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.expenses?.message}</div>
+                  <div className="invalid-feedback">errors.expenses?.message</div>
                 </Form.Group>
                 <input type="hidden" {...register('owner')} value={currentUser} />
                 <Form.Group className="form-group">
